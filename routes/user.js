@@ -3,7 +3,7 @@ import User from "../models/user.js";
 import Evento from "../models/eventos.js";
 import jwt from "jsonwebtoken";
 import jwtAuthenticated from "../helpers/jwtAuthenticated.js";
-import currentUser from "../helpers/currentUser";
+import currentUser from "../helpers/currentUser.js";
 import isAuthenticated from "../helpers/isAuthenticated.js";
 
 const router = express.Router();
@@ -15,7 +15,6 @@ router.get("/crear", (req, res) => {
 router.post("/crear", async (req, res) => {
   const { name, rut, password } = req.body;
   const existeUsuario = await User.findOne({ rut });
-  const user = await currentUser(req);
 
   if(existeUsuario){
     res.render("user/registrar", {errorRut: "El rut ya está en uso."})

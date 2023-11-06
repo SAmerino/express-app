@@ -1,7 +1,7 @@
 import express from "express";
 import Evento from "../models/eventos.js";
 import isAuthenticated from "../helpers/isAuthenticated.js";
-import currentUser from "../helpers/currentUser";
+import currentUser from "../helpers/currentUser.js";
 
 const router = express.Router();
 
