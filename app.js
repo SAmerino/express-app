@@ -1,8 +1,8 @@
 import express from "express";
-import * as handlebars from "express-handlebars";
+import handlebars from "express-handlebars";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
-import * as dotenv from "dotenv";
+import dotenv from "dotenv";
 
 
 const app = express();
@@ -14,8 +14,8 @@ app.engine(
   "hbs",
   handlebars.engine({
     extname: "hbs",
-    layoutsDir: `${__dirname}/views/layouts`,
-    partialsDir: `${__dirname}/views/partials`,
+    layoutsDir: new URL("./views/layouts", import.meta.url).pathname,
+    partialsDir: new URL("./views/partials", import.meta.url).pathname,
     defaultLayout: "index",
   })
 );
@@ -34,4 +34,4 @@ mongoose
     console.error(`Connection refuse: ${error}`);
   });
 
-export { app };
+export default app ;
