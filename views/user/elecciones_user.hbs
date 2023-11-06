@@ -1,0 +1,26 @@
+</div>
+    <div class="container mb-auto">
+        <div class="row">
+            <table class="table caption-top rounded rounded-3 overflow-hidden">
+                <caption class="fs-1 text-dark border-bottom-0 rounded-top">Mis elecciones</caption>
+                <thead>
+                    <tr>
+                        <th>ID evento</th>
+                        <th>Nombre del evento</th>
+                        <th>Fecha de creacion</th>
+                        <th>Detalles del evento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each allEvents}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.nombre_evento}}</td>
+                        <td>{{this.fecha_creacion}}</td>
+                        <td> <a href="/elecciones_detalles/{{this.id}}" class="nav-link table-link">Ver detalles</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>

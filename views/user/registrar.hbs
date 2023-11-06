@@ -1,0 +1,56 @@
+<div class="container d-flex justify-content-center align-items-center mb-auto">
+        <form action="/user/crear" method="post" class="border border-3 rounded border-black bg-color">
+            <h2 class="text-light mb-5">Registrar administrador</h2>
+            <label for="name" class="form-label text-light">Nombre:</label>
+            <input type="text" class="form-control" name="name" required><br><br>
+
+            {{#if errorRut}}
+            <p class="text-danger">{{errorRut}}</p>
+            {{/if}}
+            <label for="rut" class="form-label text-light">Rut:</label>
+            <input type="text" class="form-control mb-2" name="rut" oninput="format(this)" required><br><br>
+
+            {{#if errorPass}}
+            <p class="text-danger">{{errorPass}}</p>
+            {{else}}
+            <p class="text-light"> Su contraseña debe tener 8 caracteres </p>
+            {{/if}}
+            <label for="password" class="form-label text-light">Contraseña:</label>
+            <input type="password" class="form-control" name="password" required><br><br> 
+
+            <input type="submit" class="btn btn-primary" value="Registrarse">
+            <span style="float: right;" class="nav-item text-light"> <a href="/user/login" class="nav-link">Ya tienes una cuenta?</a></span>
+    
+        </form>
+</div>
+
+<script>
+function clean(rut) {
+    return typeof rut === 'string'
+        ? rut.replace(/[^0-9kK]/g, '').toUpperCase()
+        : ''
+}
+
+function format(input) {
+    let cleanedRut = clean(input.value);
+
+    let result = '';
+    let rutParteNumerica = cleanedRut.slice(0, -1);
+    let rutDigitoVerificador = cleanedRut.substr(cleanedRut.length - 1);
+
+    let contador = 0;
+    for (let i = rutParteNumerica.length - 1; i >= 0; i--) {
+        result = rutParteNumerica[i] + result;
+        contador++;
+
+        if (contador === 3 && i !== 0) {
+            result = '.' + result;
+            contador = 0;
+        }
+    }
+
+    result = result + '-' + rutDigitoVerificador;
+
+    input.value = result;
+}
+</script>

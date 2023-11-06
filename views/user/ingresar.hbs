@@ -1,0 +1,47 @@
+<div class="container d-flex justify-content-center align-items-center my-auto">
+        <form action="/user/login" method="post" class="border border-3 bg-color rounded border-black">
+            <h2 class="text-light mb-5">Ingresar administrador</h2>
+            <label for="rut" class="form-label text-light">Rut:</label>
+            <input type="text" class="form-control" name="rut" oninput="format(this)" required><br><br>
+
+            <label for="password" class="form-label text-light">Contraseña:</label>
+            <input type="password" class="form-control" name="password" required><br><br>
+            {{#if error}}
+            <p class="text-danger">{{error}}</p>
+            {{/if}}
+            <input type="submit" class="btn btn-primary" value="Ingresar">
+            <span style="float: right;" class="nav-item text-light"> <a href="/user/crear" class="nav-link">Aun no tienes una cuenta?</a></span>
+
+        </form>
+</div>
+
+<script>
+function clean(rut) {
+    return typeof rut === 'string'
+        ? rut.replace(/[^0-9kK]/g, '').toUpperCase()
+        : ''
+}
+
+function format(input) {
+    let cleanedRut = clean(input.value);
+
+    let result = '';
+    let rutParteNumerica = cleanedRut.slice(0, -1);
+    let rutDigitoVerificador = cleanedRut.substr(cleanedRut.length - 1);
+
+    let contador = 0;
+    for (let i = rutParteNumerica.length - 1; i >= 0; i--) {
+        result = rutParteNumerica[i] + result;
+        contador++;
+
+        if (contador === 3 && i !== 0) {
+            result = '.' + result;
+            contador = 0;
+        }
+    }
+
+    result = result + '-' + rutDigitoVerificador;
+
+    input.value = result;
+}
+</script>

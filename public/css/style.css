@@ -1,0 +1,52 @@
+body{
+    position: relative;
+    margin: 0;
+    background-image: url(../img/BG.jpg)!important;
+    background-size: cover;
+}
+
+.bg-color{
+background-color: rgba(0, 0, 0, 0.6);
+}
+
+footer{
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.table-link{
+    text-decoration: underline;
+    font-size: 1.3rem;
+}
+.nav-link:hover{
+    color: cornflowerblue!important;
+}
+
+.disabled{
+    text-decoration: none!important;
+}
+
+.btn-primary, .active{
+    background-color: orange!important;
+    border-color: black;
+}
+.btn-primary:hover, .active:hover{
+    background-color: orangered!important;
+    border-color: white;
+    color: white!important;
+}
+
+th, td, caption {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8)!important;
+    border: solid 1px black;
+    padding: 25px!important;
+}
+
+.row{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.border {
+    padding: 3rem;
+}

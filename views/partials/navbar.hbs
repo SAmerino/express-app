@@ -1,0 +1,76 @@
+<div class="container">
+    {{#if isAuthenticated}}
+        <header class="d-flex flex-wrap justify-content-center py-5 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+                <img src="../img/logo.png" class="bi me-2" width="100"/>
+                <span class="display-2 text-light">Canela 12</span>
+            </a>
+            <h2 class="justify-content-center m-auto text-light">Admin: {{nombre}}</h2>
+            <ul class="nav nav-pills">
+                {{#if pagInicio}}
+                <li class="nav-item px-3 m-auto">
+                    <a href="/"><button class="btn btn-primary btn-lg">Inicio</button></a>
+                </li>
+                <li class="nav-item px-3 m-auto">
+                    <a href="/elecciones" class="nav-link text-light fs-5">Elecciones</a>
+                </li>
+                {{else}}
+                    {{#if pagElecc}}
+                    <li class="nav-item px-3 m-auto">
+                    <a href="/" class="nav-link text-light fs-5">Inicio</a>
+                    </li>
+                    <li class="nav-item px-3 m-auto">
+                        <a href="/elecciones"><button class="btn btn-primary btn-lg">Elecciones</button></a>
+                    </li>
+                    {{else}}
+                    <li class="nav-item px-3 m-auto">
+                        <a href="/" class="nav-link text-light fs-5" aria-current="page">Inicio</a>
+                    </li>
+                    <li class="nav-item px-3 m-auto">
+                    <a href="/elecciones" class="nav-link text-light fs-5">Elecciones</a>
+                    </li>
+                    {{/if}}
+                {{/if}}
+                <li class="nav-item px-3 m-auto">
+                    <a href="/user/logout" class="nav-link text-light"><svg xmlns="../svg/box-arrow-right.svg" width="40" height="40" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"></path>
+  <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"></path>
+                    </svg></a>
+                </li>
+            </ul>
+        </header>
+    {{else}}
+        <header class="d-flex flex-wrap justify-content-center py-5 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+                <img src="../img/logo.png" class="bi me-2" width="100"/>
+                <span class="display-2 text-light">Canela 12</span>
+            </a>
+            <ul class="nav nav-pills">
+                {{#if pagInicio}}
+                <li class="nav-item px-3 m-auto">
+                    <a href="/"><button class="btn btn-primary btn-lg">Inicio</button></a>
+                </li>
+                <li class="nav-item px-3 m-auto">
+                    <a href="/elecciones" class="nav-link text-light fs-5">Elecciones</a>
+                </li>
+                {{else}}
+                    {{#if pagElecc}}
+                    <li class="nav-item px-3 m-auto">
+                    <a href="/" class="nav-link text-light fs-5">Inicio</a>
+                    </li>
+                    <li class="nav-item px-3 m-auto">
+                        <a href="/elecciones"><button class="btn btn-primary btn-lg">Elecciones</button></a>
+                    </li>
+                    {{else}}
+                    <li class="nav-item px-3 m-auto">
+                        <a href="/" class="nav-link text-light fs-5" aria-current="page">Inicio</a>
+                    </li>
+                    <li class="nav-item px-3 m-auto">
+                    <a href="/elecciones" class="nav-link text-light fs-5">Elecciones</a>
+                    </li>
+                    {{/if}}
+                {{/if}}
+            </ul>
+        </header>
+    {{/if}}
+</div>
