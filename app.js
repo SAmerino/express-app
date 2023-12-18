@@ -3,7 +3,7 @@ import handlebars from "express-handlebars";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
-
+import cors from "cors";
 
 const app = express();
 
@@ -14,12 +14,13 @@ app.engine(
   "hbs",
   handlebars.engine({
     extname: "hbs",
-    layoutsDir: new URL("./views/layouts", import.meta.url).pathname,
-    partialsDir: new URL("./views/partials", import.meta.url).pathname,
+    layoutsDir: ("./views/layouts"),
+    partialsDir: ("./views/partials"),
     defaultLayout: "index",
   })
 );
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

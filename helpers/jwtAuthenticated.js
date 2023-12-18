@@ -1,19 +1,19 @@
 import jwt from "jsonwebtoken";
 
 const jwtAuthenticated = (req, res, next) =>{
-    const cookie = req.cookies["jwt"]
+    const isAuth = req.headers.authorization;
 
-    if (!cookie){
-        res.redirect("login")
+    if (!isAuth){
+        res.json({success: false, message: "acceso denegado"})
         return
     }
     
     try{
-        jwt.verify(cookie, process.env.JWT_PASS);
+        jwt.verify(isAuth, process.env.JWT_PASS);
         next();
     } catch(error) {
         console.log("error", error);
-        res.redirect("login");
+        res.json({success: false, message: "acceso denegado"})
     }
 }
 
